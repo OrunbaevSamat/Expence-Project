@@ -59,12 +59,17 @@ const totalExpense = expensesState.reduce((a,el)=>{
 }, 0);
 
 
+const totalExYear = filterByYear.reduce((a,el)=>{
+  return a + el.price;
+}, 0);
+
+
 
   return (
     <div>
       <Header onShowFormHandler = {showFormHandler}/>
       {form === true ? <Form onSave = {save} onCloseFormHandler={closeFormHandler} /> : ""}
-      <Chart/>
+      <Chart expense = {filterByYear}/>
       <Select onChange={selectValue}>
         <option value="2024">2024</option>
         <option value="2023">2023</option>
@@ -75,7 +80,8 @@ const totalExpense = expensesState.reduce((a,el)=>{
               return  <Expenceitem key={el.id} title = {el.title} price = {el.price} date = {el.date}/>
             })
         }
-        <h1>Итого: {totalExpense}</h1>
+        <h1>ВСЕ ГОДЫ: {totalExpense}</h1>
+        <h1>Итого за год: {totalExYear}</h1>
 
 
     </div>

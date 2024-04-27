@@ -2,58 +2,65 @@ import React from 'react'
 import Chartbar from './Chartbar'
 import styled from 'styled-components'
 
-const Chart = () => {
+const Chart = (props) => {
 
   const months = [
     {
       month:"january",
-      rashod:2000,
+      rashod:0,
     },
     {
       month:"february",
-      rashod:12000,
+      rashod:0,
     },
     {
       month:"march",
-      rashod:3000,
+      rashod:0,
     },
     {
       month:"april",
-      rashod:7000,
+      rashod:0,
     },
     {
       month:"may",
-      rashod:12000,
-    },
-    {
-      month:"july",
-      rashod:6000,
+      rashod:0,
     },
     {
       month:"june",
-      rashod:2000,
+      rashod:0,
+    },
+    {
+      month:"july",
+      rashod:0,
     },
     {
       month:"august",
-      rashod:15000,
+      rashod:0,
     },
     {
       month:"september",
-      rashod:8000,
+      rashod:0,
     },
     {
       month:"october",
-      rashod:200,
+      rashod:0,
     },
     {
       month:"november",
-      rashod:7000,
+      rashod:0,
     },
     {
       month:"december",
-      rashod:11000,
+      rashod:0,
     },
   ]
+
+  props.expense.map((el)=>{
+    const month = el.date.getMonth()
+    months[month].rashod = +el.price + months[month].rashod
+  })
+
+
   return (
     <Chartstyle>
       {
